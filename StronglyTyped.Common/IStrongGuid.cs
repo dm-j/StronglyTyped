@@ -37,5 +37,10 @@ namespace StronglyTyped
         /// </summary>
         /// <param name="value">The TBase to convert</param>
         static abstract explicit operator TSelf(string value);
+
+        static abstract bool operator ==(TSelf left, string right);
+        static abstract bool operator !=(TSelf left, string right);
+        static abstract bool operator ==(string left, TSelf right);
+        static abstract bool operator !=(string left, TSelf right);
     }
 }

@@ -3,8 +3,8 @@
 /// </summary>
 /// <remarks>
 /// This struct is immutable and can be used for performance-sensitive scenarios that require
-/// type safety and minimal allocations. It implements the <see cref="IStrongInt{T}"/> interface
-/// for strong typing and can be used with the <see cref="StronglyTyped"/> library.
+/// type safety and minimal allocations. It implements the <see cref="global::StronglyTyped.IStrongInt{T}"/> interface
+/// for strong typing and can be used with the <see cref="global::StronglyTyped"/> library.
 /// </remarks>
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
@@ -65,35 +65,35 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator >(ZYX left, ZYX right) =>
-      left.CompareTo(right) > 0;
+    left.CompareTo(right) > 0;
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator >=(ZYX left, ZYX right) =>
-      left.CompareTo(right) >= 0;
+    left.CompareTo(right) >= 0;
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator <(ZYX left, ZYX right) =>
-      left.CompareTo(right) < 0;
+    left.CompareTo(right) < 0;
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator <=(ZYX left, ZYX right) =>
-      left.CompareTo(right) <= 0;
+    left.CompareTo(right) <= 0;
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX operator -(ZYX value) =>
-      From(-value.Value);
+    From(-value.Value);
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX operator +(ZYX value) =>
-      From(+value.Value);
+    From(+value.Value);
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX operator ++(ZYX value) =>
-      From(value.Value + 1);
+    From(value.Value + 1);
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX operator --(ZYX value) =>
-      From(value.Value - 1);
+    From(value.Value - 1);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
@@ -109,7 +109,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
     }
 
     public override global::System.Int32 GetHashCode() =>
-      Value.GetHashCode();
+    Value.GetHashCode();
 
     /// <summary>
     /// Determines whether this instance and another specified <see cref="ZYX"/> object have the same value.
@@ -177,7 +177,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
     new(global::System.Int32.Parse(s, provider));
 
     public static global::System.Boolean TryParse(global::System.String? s, [global::System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out ZYX result) =>
-      TryParse(s, null, out result);
+    TryParse(s, null, out result);
 
     /// <summary>
     /// Compares the current instance with another object and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
@@ -224,7 +224,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
 
     [global::System.Diagnostics.Contracts.Pure]
     public string ToString(global::System.String? format, global::System.IFormatProvider? formatProvider) =>
-      Value.ToString(format, formatProvider);
+    Value.ToString(format, formatProvider);
 
     /// <summary>
     /// Returns the string representation of this <see cref="ZYX"/> instance, using the default format specifier.
@@ -242,8 +242,16 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
     }
 
     public global::System.Boolean TryFormat(global::System.Span<global::System.Char> destination, out global::System.Int32 charsWritten, global::System.ReadOnlySpan<global::System.Char> format, global::System.IFormatProvider? _) =>
-      Value.TryFormat(destination, out charsWritten, format);
+    Value.TryFormat(destination, out charsWritten, format);
 
+    /// <summary>
+    /// Creates a new instance of the <see cref="ZYX"/> struct from a value.
+    /// </summary>
+    /// <param name="value">The value to convert.</param>
+    /// <returns>A new instance of <see cref="ZYX"/> initialized to <paramref name="value"/></returns>
+    /// <remarks>
+    /// Preprocess <paramref name="value"/> before creating by implementing <see cref="_preprocess"/>
+    /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX From(global::System.Int32 value)
     {
@@ -310,7 +318,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
     }
 
     public static global::System.Boolean TryFrom(global::System.Int32 value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result) =>
-      TryFrom(value, out result, out _);
+    TryFrom(value, out result, out _);
 
     public static global::System.Boolean TryFrom(global::System.Int32 value, [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX? result, out IReadOnlySet<string> failures)
     {
@@ -333,7 +341,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
     }
 
     public static global::System.Boolean TryFrom(global::System.Int32 value, [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX? result) =>
-      TryFrom(value, out result, out _);
+    TryFrom(value, out result, out _);
 
     [global::System.Diagnostics.Contracts.Pure]
     public global::System.Collections.Generic.IReadOnlyList<global::System.String> Validate()
@@ -347,11 +355,11 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.ReadOnlySpan<char> s, global::System.Globalization.NumberStyles style, global::System.IFormatProvider? provider) =>
-      new(global::System.Int32.Parse(s, style, provider));
+    new(global::System.Int32.Parse(s, style, provider));
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.String s, global::System.Globalization.NumberStyles style, IFormatProvider? provider) =>
-      new(global::System.Int32.Parse(s, style, provider));
+    new(global::System.Int32.Parse(s, style, provider));
 
     public static global::System.Boolean TryParse(global::System.ReadOnlySpan<global::System.Char> s, global::System.IFormatProvider? provider, [global::System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out ZYX result)
     {
@@ -411,17 +419,17 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
 
         private readonly Type[] _knownTypes = new[]
         {
-      typeof(ZYX),
-      typeof(global::System.String),
-      typeof(global::System.Int32),
-    };
+            typeof(ZYX),
+            typeof(global::System.String),
+            typeof(global::System.Int32),
+        };
 
         public override global::System.Boolean CanConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type sourceType) =>
-          _knownTypes.Contains(sourceType) ||
-          (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Int32)));
+        _knownTypes.Contains(sourceType) ||
+        (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Int32)));
 
         public override global::System.Boolean CanConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type? destinationType) =>
-          destinationType == typeof(ZYX);
+        destinationType == typeof(ZYX);
 
         public override global::System.Object? ConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object value)
         {
@@ -432,7 +440,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
                 global::System.Int32 v => new ZYX(v),
                 global::System.String v => Parse(v),
                 var v when _baseConverter.CanConvertFrom(v.GetType()) && _baseConverter.CanConvertTo(typeof(global::System.Int32)) =>
-                  new ZYX((global::System.Int32)_baseConverter.ConvertTo(context, culture, v, typeof(global::System.Int32))!),
+                new ZYX((global::System.Int32)_baseConverter.ConvertTo(context, culture, v, typeof(global::System.Int32))!),
                 _ => throw new global::System.InvalidCastException($"Cannot convert {value ?? "<null>"} ({value?.GetType().Name ?? "<null>"}) to {nameof(ZYX)}>"),
             };
         }
@@ -455,34 +463,34 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongInt<ZYX
     }
 
 #if (USE_SYSTEM_TEXT_JSON)
-  /// <summary>
-  /// A JsonConverter for System.Text.Json which converts ZYX transparently to and from Json representations
-  /// </summary>
-  public class SystemJsonConverter : global::System.Text.Json.Serialization.JsonConverter<ZYX>
-  {
-    public override ZYX Read(ref global::System.Text.Json.Utf8JsonReader reader, global::System.Type typeToConvert, global::System.Text.Json.JsonSerializerOptions options)
+    /// <summary>
+    /// A JsonConverter for System.Text.Json which converts ZYX transparently to and from Json representations
+    /// </summary>
+    public class SystemJsonConverter : global::System.Text.Json.Serialization.JsonConverter<ZYX>
     {
-      return new(reader.GetInt32());
-    }
+        public override ZYX Read(ref global::System.Text.Json.Utf8JsonReader reader, global::System.Type typeToConvert, global::System.Text.Json.JsonSerializerOptions options)
+        {
+            return new(reader.GetInt32());
+        }
 
-    public override void Write(global::System.Text.Json.Utf8JsonWriter writer, ZYX value, global::System.Text.Json.JsonSerializerOptions options)
-    {
-      writer.WriteRawValue(global::System.Text.Json.JsonSerializer.Serialize(value.Value));
+        public override void Write(global::System.Text.Json.Utf8JsonWriter writer, ZYX value, global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer.WriteRawValue(global::System.Text.Json.JsonSerializer.Serialize(value.Value));
+        }
     }
-  }
 #endif
 
 #if (USE_NEWTONSOFT_JSON)
-  /// <summary>
-  /// A JsonConverter for Newtonsoft.Json which converts ZYX transparently to and from Json representations
-  /// </summary>
-  public class NewtonsoftJsonConverter : global::Newtonsoft.Json.JsonConverter<ZYX>
-  {
-    public override ZYX ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, ZYX existingValue, bool hasExistingValue, Newtonsoft.Json.JsonSerializer serializer) =>
-      Parse(reader.Value!.ToString());
+    /// <summary>
+    /// A JsonConverter for Newtonsoft.Json which converts ZYX transparently to and from Json representations
+    /// </summary>
+    public class NewtonsoftJsonConverter : global::Newtonsoft.Json.JsonConverter<ZYX>
+    {
+        public override ZYX ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, ZYX existingValue, bool hasExistingValue, Newtonsoft.Json.JsonSerializer serializer) =>
+            Parse(reader.Value!.ToString());
 
-    public override void WriteJson(Newtonsoft.Json.JsonWriter writer, ZYX value, Newtonsoft.Json.JsonSerializer serializer) =>
-      global::Newtonsoft.Json.Linq.JToken.FromObject(((ZYX)value).Value).WriteTo(writer);
-  }
+        public override void WriteJson(Newtonsoft.Json.JsonWriter writer, ZYX value, Newtonsoft.Json.JsonSerializer serializer) =>
+            global::Newtonsoft.Json.Linq.JToken.FromObject(((ZYX)value).Value).WriteTo(writer);
+    }
 #endif
 }

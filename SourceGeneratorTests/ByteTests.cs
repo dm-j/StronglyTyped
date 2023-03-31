@@ -14,11 +14,11 @@ namespace SourceGeneratorTests
 
         [StrongByte] public partial record struct Fussy
         {
-            private const byte MAX = (byte)100;
+            private const byte _max = (byte)100;
 
             partial void _validate(ref HashSet<string> errors)
             {
-                if (Value > MAX)
+                if (Value > _max)
                     errors.Add($"Value must be at most 100 ({Value})");
             }
         }

@@ -20,6 +20,10 @@
 		<EnforceExtentedAnalyzerRules>true</EnforceExtentedAnalyzerRules>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DefineConstants>$(DefineConstants);USE_SYSTEM_TEXT_JSON;USE_NEWTONSOFT_JSON</DefineConstants>
+    </PropertyGroup>
+
     <ItemGroup>
       <Compile Remove="Resources\StrongBoolTemplate.cs" />
       <Compile Remove="Resources\StrongByteTemplate.cs" />

@@ -3,8 +3,8 @@
 /// </summary>
 /// <remarks>
 /// This struct is immutable and can be used for performance-sensitive scenarios that require
-/// type safety and minimal allocations. It implements the <see cref="IStrongGuid{T}"/> interface
-/// for strong typing and can be used with the <see cref="StronglyTyped"/> library.
+/// type safety and minimal allocations. It implements the <see cref="global::StronglyTyped.IStrongGuid{T}"/> interface
+/// for strong typing and can be used with the <see cref="global::StronglyTyped"/> library.
 /// </remarks>
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
@@ -26,7 +26,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// </summary>
     /// <returns>A strongly typed new Guid</returns>
     public static ZYX New() =>
-      new(global::System.Guid.NewGuid());
+        new(global::System.Guid.NewGuid());
 
     /// <summary>
     /// A ZYX created from Guid.Empty
@@ -41,7 +41,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// <returns>The <see cref="global::System.Guid"/> value that represents the converted <see cref="ZYX"/> value.</returns>
     [global::System.Diagnostics.Contracts.Pure]
     public static explicit operator global::System.Guid(ZYX value) =>
-    value.Value;
+        value.Value;
 
     /// <summary>
     /// Converts an <see cref="global::System.Guid"/> value to a <see cref="ZYX"/> value.
@@ -53,7 +53,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static explicit operator ZYX(global::System.Guid value) =>
-    new(value);
+        new(value);
 
     /// <summary>
     /// Parses a <see cref="global::System.String"/> value to a <see cref="global::System.Guid"/>, then a <see cref="ZYX"/> value.
@@ -70,7 +70,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// <summary>
     /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
     /// </summary>
-    /// <param name="value">Thevalue to use as the underlying value of the <see cref="ZYX"/> struct.</param>
+    /// <param name="value">The value to use as the underlying value of the <see cref="ZYX"/> struct.</param>
     /// <remarks>
     /// No validation or preprocessing is performed.
     /// </remarks>
@@ -80,8 +80,20 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
         Value = value;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
+    /// </summary>
+    /// <param name="value">The string value to parse to use as the underlying value of the <see cref="ZYX"/> struct.</param>
+    /// <remarks>
+    /// No validation or preprocessing is performed.
+    /// </remarks>
+    [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute]
+    public ZYX(global::System.String value)
+        : this(global::System.Guid.Parse(value))
+    { }
+
     public override global::System.Int32 GetHashCode() =>
-      Value.GetHashCode();
+        Value.GetHashCode();
 
     /// <summary>
     /// Determines whether this instance and another specified <see cref="ZYX"/> object have the same value.
@@ -97,16 +109,16 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
         return result;
     }
 
-    public static bool operator ==(ZYX? left, string? right) =>
-        left?.Value.ToString().Equals(right!);
+    public static bool operator ==(ZYX left, string? right) =>
+        left.Value.ToString().Equals(right!);
 
-    public static bool operator !=(ZYX? left, string? right) =>
+    public static bool operator !=(ZYX left, string? right) =>
         !(left == right);
 
-    public static bool operator ==(string? left, ZYX? right) =>
+    public static bool operator ==(string? left, ZYX right) =>
         right == left;
 
-    public static bool operator !=(string? left, ZYX? right) =>
+    public static bool operator !=(string? left, ZYX right) =>
         !(right == left);
 
     /// <summary>
@@ -118,7 +130,6 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// </remarks>
     public static ZYX Create(global::System.Guid value) =>
         new(value);
-
 
     /// <summary>
     /// Parses the string representation of a ZYX value.
@@ -133,7 +144,6 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     public static ZYX Parse(global::System.String? s) =>
         new(global::System.Guid.Parse(s!));
 
-
     /// <summary>
     /// Converts the span representation of a ZYX value to its <see cref="ZYX"/> equivalent.
     /// </summary>
@@ -145,7 +155,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.ReadOnlySpan<global::System.Char> s, global::System.IFormatProvider? provider) =>
-    From(global::System.Guid.Parse(s, provider));
+        From(global::System.Guid.Parse(s, provider));
 
     /// <summary>
     /// Converts the string representation of a value in a specified culture-specific format to its <see cref="ZYX"/> equivalent.
@@ -160,7 +170,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.String s, global::System.IFormatProvider? provider) =>
-    From(global::System.Guid.Parse(s, provider));
+        From(global::System.Guid.Parse(s, provider));
 
     /// <summary>
     /// Attempts to parse a string to a Guid then create a ZYX. Validation and processing will be performed, if implemented
@@ -169,7 +179,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// <param name="result">out ZYX created (if successful)</param>
     /// <returns>Whether or not the creation was successful</returns>
     public static global::System.Boolean TryParse(global::System.String? s, [global::System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out ZYX result) =>
-      TryParse(s, null, out result);
+        TryParse(s, null, out result);
 
     /// <summary>
     /// Attempts to parse a string to a Guid then create a ZYX. Validation and processing will be performed, if implemented
@@ -284,7 +294,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// <returns>A string representation of the ZYX</returns>
     [global::System.Diagnostics.Contracts.Pure]
     public string ToString(global::System.String? format, global::System.IFormatProvider? formatProvider) =>
-      Value.ToString(format, formatProvider);
+        Value.ToString(format, formatProvider);
 
     /// <summary>
     /// Returns the string representation of this <see cref="ZYX"/> instance, using the default format specifier.
@@ -310,13 +320,16 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// <param name="_">Currently ignored (behaves like System.Guid)</param>
     /// <returns></returns>
     public global::System.Boolean TryFormat(global::System.Span<global::System.Char> destination, out global::System.Int32 charsWritten, global::System.ReadOnlySpan<global::System.Char> format, global::System.IFormatProvider? _) =>
-      Value.TryFormat(destination, out charsWritten, format);
+        Value.TryFormat(destination, out charsWritten, format);
 
     /// <summary>
-    /// Creates a ZYX from a Guid. Preprocessing will be performed, if implemented
+    /// Creates a new instance of the <see cref="ZYX"/> struct from a value.
     /// </summary>
-    /// <param name="value">The value to create this ZYX from</param>
-    /// <returns>A ZYX which contains the Guid</returns>
+    /// <param name="value">The value to convert.</param>
+    /// <returns>A new instance of <see cref="ZYX"/> initialized to <paramref name="value"/></returns>
+    /// <remarks>
+    /// Preprocess <paramref name="value"/> before creating by implementing <see cref="_preprocess"/>
+    /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX From(global::System.Guid value)
     {
@@ -387,7 +400,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     /// <param name="result">out ZYX result</param>
     /// <returns>Whether or not the creation succeeded</returns>
     public static global::System.Boolean TryFrom(global::System.Guid value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result) =>
-      TryFrom(value, out result, out _);
+        TryFrom(value, out result, out _);
 
     /// <summary>
     /// Attempts to validate a ZYX based on implementation of _validate, if not implemented no validation will occur
@@ -416,17 +429,17 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
 
         private readonly Type[] _knownTypes = new[]
         {
-      typeof(ZYX),
-      typeof(global::System.String),
-      typeof(global::System.Guid),
-    };
+            typeof(ZYX),
+            typeof(global::System.String),
+            typeof(global::System.Guid),
+        };
 
         public override global::System.Boolean CanConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type sourceType) =>
-          _knownTypes.Contains(sourceType) ||
-          (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Guid)));
+        _knownTypes.Contains(sourceType) ||
+        (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Guid)));
 
         public override global::System.Boolean CanConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type? destinationType) =>
-          destinationType == typeof(ZYX);
+        destinationType == typeof(ZYX);
 
         public override global::System.Object? ConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object value)
         {
@@ -437,7 +450,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
                 global::System.Guid v => new ZYX(v),
                 global::System.String v => Parse(v),
                 var v when _baseConverter.CanConvertFrom(v.GetType()) && _baseConverter.CanConvertTo(typeof(global::System.Guid)) =>
-                  ConvertFrom(context, culture, _baseConverter.ConvertTo(context, culture, v!, typeof(global::System.Guid))!),
+                ConvertFrom(context, culture, _baseConverter.ConvertTo(context, culture, v!, typeof(global::System.Guid))!),
                 _ => throw new global::System.InvalidCastException($"Cannot convert {value ?? "<null>"} ({value?.GetType().Name ?? "<null>"}) to {typeof(ZYX).FullName}>"),
             };
         }
@@ -468,34 +481,34 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
     }
 
 #if (USE_SYSTEM_TEXT_JSON)
-  /// <summary>
-  /// A JsonConverter for System.Text.Json which converts ZYX transparently to and from Json representations of a Guid
-  /// </summary>
-  public class SystemJsonConverter : global::System.Text.Json.Serialization.JsonConverter<ZYX>
-  {
-    public override ZYX Read(ref global::System.Text.Json.Utf8JsonReader reader, global::System.Type typeToConvert, global::System.Text.Json.JsonSerializerOptions options)
+    /// <summary>
+    /// A JsonConverter for System.Text.Json which converts ZYX transparently to and from Json representations of a Guid
+    /// </summary>
+    public class SystemJsonConverter : global::System.Text.Json.Serialization.JsonConverter<ZYX>
     {
-      return new(reader.GetGuid());
-    }
+        public override ZYX Read(ref global::System.Text.Json.Utf8JsonReader reader, global::System.Type typeToConvert, global::System.Text.Json.JsonSerializerOptions options)
+        {
+            return new(reader.GetGuid());
+        }
 
-    public override void Write(global::System.Text.Json.Utf8JsonWriter writer, ZYX value, global::System.Text.Json.JsonSerializerOptions options)
-    {
-      writer.WriteRawValue(global::System.Text.Json.JsonSerializer.Serialize(value.Value));
+        public override void Write(global::System.Text.Json.Utf8JsonWriter writer, ZYX value, global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer.WriteRawValue(global::System.Text.Json.JsonSerializer.Serialize(value.Value));
+        }
     }
-  }
 #endif
 
 #if (USE_NEWTONSOFT_JSON)
-  /// <summary>
-  /// A JsonConverter for Newtonsoft.Json which converts ZYX transparently to and from Json representations of a Guid
-  /// </summary>
-  public class NewtonsoftJsonConverter : global::Newtonsoft.Json.JsonConverter<ZYX>
-  {
-    public override ZYX ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, ZYX existingValue, bool hasExistingValue, Newtonsoft.Json.JsonSerializer serializer) =>
-      Parse(reader.Value!.ToString());
+    /// <summary>
+    /// A JsonConverter for Newtonsoft.Json which converts ZYX transparently to and from Json representations of a Guid
+    /// </summary>
+    public class NewtonsoftJsonConverter : global::Newtonsoft.Json.JsonConverter<ZYX>
+    {
+        public override ZYX ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, ZYX existingValue, bool hasExistingValue, Newtonsoft.Json.JsonSerializer serializer) =>
+            Parse(reader.Value!.ToString());
 
-    public override void WriteJson(Newtonsoft.Json.JsonWriter writer, ZYX value, Newtonsoft.Json.JsonSerializer serializer) =>
-      global::Newtonsoft.Json.Linq.JToken.FromObject(((ZYX)value).Value).WriteTo(writer);
-  }
+        public override void WriteJson(Newtonsoft.Json.JsonWriter writer, ZYX value, Newtonsoft.Json.JsonSerializer serializer) =>
+            global::Newtonsoft.Json.Linq.JToken.FromObject(((ZYX)value).Value).WriteTo(writer);
+    }
 #endif
 }
