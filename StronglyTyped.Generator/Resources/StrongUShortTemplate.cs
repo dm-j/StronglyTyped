@@ -1,3 +1,11 @@
+/// <summary>
+/// Represents a strongly-typed record struct for a unsigned 16-bit integer value
+/// </summary>
+/// <remarks>
+/// This struct is immutable and can be used for performance-sensitive scenarios that require
+/// type safety and minimal allocations. It implements the <see cref="IStrongUShort{T}"/> interface
+/// for strong typing and can be used with the <see cref="StronglyTyped"/> library.
+/// </remarks>
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
 #if (USE_SYSTEM_TEXT_JSON)
@@ -8,20 +16,38 @@
 #endif
 public readonly partial record struct ZYX : global::StronglyTyped.IStrongUShort<ZYX>
 {
-  public required readonly global::System.UInt16 Value { get; init; }
+    /// <summary>
+    /// Gets the value of the ZYX struct.
+    /// </summary>
+    public required readonly global::System.UInt16 Value { get; init; }
 
-
+    /// <summary>
+    /// Gets a <see cref="ZYX"/> instance representing the value of 1.
+    /// </summary>
+    public static ZYX One => _one;
   private readonly static ZYX _one = new(1);
-  public static ZYX One => _one;
 
+    /// <summary>
+    /// Gets a <see cref="ZYX"/> instance representing the value of 0.
+    /// </summary>
+    public static ZYX Zero => _zero;
   private readonly static ZYX _zero = new(0);
-  public static ZYX Zero => _zero;
 
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.UInt16"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="ZYX"/> value to convert.</param>
+    /// <returns>The <see cref="global::System.UInt16"/> value that represents the converted <see cref="ZYX"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static explicit operator global::System.UInt16(ZYX value) =>
     value.Value;
 
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts an <see cref="global::System.UInt16"/> value to a <see cref="ZYX"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="global::System.UInt16"/> value to convert.</param>
+    /// <returns>A new <see cref="ZYX"/> value that represents the converted <see cref="global::System.UInt16"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static explicit operator ZYX(global::System.UInt16 value) =>
     new(value);
 
@@ -119,43 +145,15 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUShort<
     return new(value);
   }
 
-  /// <summary>
-  /// If implemented, the wrapped value will be preprocessed by this method before creation
-  /// Preprocessing runs before validation (if implemented)
-  /// (note that using the constructor or cast operators will not use this method)
-  /// </summary>
-  /// <param name="value">The value which is to be preprocessed</param>
   static partial void _preprocess(ref global::System.UInt16 result);
 
-  /// <summary>
-  /// If implemented, the result of calling CompareTo on the wrapped value will be modified by this method
-  /// </summary>
-  /// <param name="result">The value which will be returned by CompareTo</param>
   partial void _overrideEquals(ZYX? obj, ref global::System.Boolean result);
 
-  /// <summary>
-  /// If implemented, the result of calling ToString on the wrapped value will be modified by this method
-  /// </summary>
-  /// <param name="result">The value which will be returned by ToString</param>
   static partial void _overrideToString(global::System.UInt16 value, ref global::System.String result);
 
-  /// <summary>
-  /// If implemented, the result of calling CompareTo on the wrapped value will be modified by this method
-  /// </summary>
-  /// <param name="result">The value which will be returned by CompareTo</param>
   partial void _overrideCompareTo(global::System.Object? obj, ref global::System.Int32 result);
 
-  /// <summary>
-  /// If implemented, this method will be used to check that the value is valid.
-  /// Validation runs after preprocessing (if implemented)
-  /// If errors contains any values validation will be considered to have failed.
-  /// (note that using the constructor or cast operators will not use this method)
-  /// </summary>
-  /// <param name="errors">A set of reasons why the value fails validation</param>
   partial void _validate(ref global::System.Collections.Generic.HashSet<global::System.String> errors);
-
-  static partial void _minValue(ref global::System.UInt16 min);
-  static partial void _maxValue(ref global::System.UInt16 max);
 
   public static global::System.Boolean TryFrom(global::System.UInt16 value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result, out global::System.Collections.Generic.IReadOnlySet<global::System.String> failures)
   {

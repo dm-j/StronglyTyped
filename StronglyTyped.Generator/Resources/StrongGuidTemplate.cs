@@ -1,4 +1,12 @@
-﻿[global::System.Diagnostics.DebuggerDisplay("{Value}")]
+﻿/// <summary>
+/// Represents a strongly-typed record struct for a Guid
+/// </summary>
+/// <remarks>
+/// This struct is immutable and can be used for performance-sensitive scenarios that require
+/// type safety and minimal allocations. It implements the <see cref="IStrongGuid{T}"/> interface
+/// for strong typing and can be used with the <see cref="StronglyTyped"/> library.
+/// </remarks>
+[global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
 #if (USE_SYSTEM_TEXT_JSON)
 [global::System.Text.Json.Serialization.JsonConverter(typeof(SystemJsonConverter))]
@@ -8,10 +16,10 @@
 #endif
 public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZYX>
 {
-  /// <summary>
-  /// The Guid value this ZYX contains
-  /// </summary>
-  public required global::System.Guid Value { get; init; }
+    /// <summary>
+    /// Gets the value of the ZYX struct.
+    /// </summary>
+    public required readonly global::System.Guid Value { get; init; }
 
   /// <summary>
   /// Creates a new ZYX from a newly generated Guid
@@ -26,19 +34,21 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
   public static ZYX Empty => _empty;
   private readonly static ZYX _empty = new(global::System.Guid.Empty);
 
-  /// <summary>
-  /// Explicitly converts a ZYX to a Guid
-  /// </summary>
-  /// <param name="value">The Guid that the ZYX contained</param>
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.Guid"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="ZYX"/> value to convert.</param>
+    /// <returns>The <see cref="global::System.Guid"/> value that represents the converted <see cref="ZYX"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static explicit operator global::System.Guid(ZYX value) =>
     value.Value;
 
-  /// <summary>
-  /// Explicitly converts a Guid to a ZYX
-  /// </summary>
-  /// <param name="value">A ZYX which contains that Guid</param>
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts an <see cref="global::System.Guid"/> value to a <see cref="ZYX"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="global::System.Guid"/> value to convert.</param>
+    /// <returns>A new <see cref="ZYX"/> value that represents the converted <see cref="global::System.Guid"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static explicit operator ZYX(global::System.Guid value) =>
     new(value);
 

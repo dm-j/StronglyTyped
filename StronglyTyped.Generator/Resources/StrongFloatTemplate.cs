@@ -1,3 +1,11 @@
+/// <summary>
+/// Represents a strongly-typed struct for a signed single-precision floating point value
+/// </summary>
+/// <remarks>
+/// This struct is immutable and can be used for performance-sensitive scenarios that require
+/// type safety and minimal allocations. It implements the <see cref="IStrongFloat{T}"/> interface
+/// for strong typing and can be used with the <see cref="StronglyTyped"/> library.
+/// </remarks>
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
 #if (USE_SYSTEM_TEXT_JSON)
@@ -8,22 +16,44 @@
 #endif
 public readonly partial record struct ZYX : global::StronglyTyped.IStrongFloat<ZYX>
 {
-  public required readonly global::System.Single Value { get; init; }
+    /// <summary>
+    /// Gets the value of the ZYX struct.
+    /// </summary>
+    public required readonly global::System.Single Value { get; init; }
 
+    /// <summary>
+    /// Gets a <see cref="ZYX"/> instance representing the value of -1.
+    /// </summary>
+    public static ZYX NegativeOne => _negativeOne;
   private readonly static ZYX _negativeOne = new(-1);
-  public static ZYX NegativeOne => _negativeOne;
 
+    /// <summary>
+    /// Gets a <see cref="ZYX"/> instance representing the value of 1.
+    /// </summary>
+    public static ZYX One => _one;
   private readonly static ZYX _one = new(1);
-  public static ZYX One => _one;
 
+    /// <summary>
+    /// Gets a <see cref="ZYX"/> instance representing the value of 0.
+    /// </summary>
+    public static ZYX Zero => _zero;
   private readonly static ZYX _zero = new(0);
-  public static ZYX Zero => _zero;
 
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.Single"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="ZYX"/> value to convert.</param>
+    /// <returns>The <see cref="global::System.Single"/> value that represents the converted <see cref="ZYX"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static explicit operator global::System.Single(ZYX value) =>
     value.Value;
 
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts an <see cref="global::System.Single"/> value to a <see cref="ZYX"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="global::System.Single"/> value to convert.</param>
+    /// <returns>A new <see cref="ZYX"/> value that represents the converted <see cref="global::System.Single"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static explicit operator ZYX(global::System.Single value) =>
     new(value);
 

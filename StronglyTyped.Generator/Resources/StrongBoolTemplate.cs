@@ -1,3 +1,11 @@
+/// <summary>
+/// Represents a strongly-typed record struct for a boolean value
+/// </summary>
+/// <remarks>
+/// This struct is immutable and can be used for performance-sensitive scenarios that require
+/// type safety and minimal allocations. It implements the <see cref="IStrongBool{T}"/> interface
+/// for strong typing and can be used with the <see cref="StronglyTyped"/> library.
+/// </remarks>
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
 #if (USE_SYSTEM_TEXT_JSON)
@@ -8,22 +16,22 @@
 #endif
 public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZYX>
 {
-  /// <summary>
-  /// The Value this strong type wraps
-  /// </summary>
-  public required readonly global::System.Boolean Value { get; init; }
+    /// <summary>
+    /// Gets the value of the ZYX struct.
+    /// </summary>
+    public required readonly global::System.Boolean Value { get; init; }
 
+    /// <summary>
+    /// Gets a <see cref="ZYX"/> instance representing the value of true.
+    /// </summary>
+    public static ZYX True => _true;
   private static readonly ZYX _true = new(true);
-  /// <summary>
-  /// A true ZYX
-  /// </summary>
-  public static ZYX True => _true;
 
+    /// <summary>
+    /// Gets a <see cref="ZYX"/> instance representing the value of false.
+    /// </summary>
+    public static ZYX False => _false;
   private static readonly ZYX _false = new(false);
-  /// <summary>
-  /// A false ZYX
-  /// </summary>
-  public static ZYX False => _false;
 
   /// <summary>
   /// Is the value wrapped in this ZYX true
@@ -35,19 +43,21 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
   /// </summary>
   public bool IsFalse => !Value;
 
-  /// <summary>
-  /// Implicitly casts a ZYX to a bool
-  /// </summary>
-  /// <param name="value">The value to cast</param>
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.Boolean"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="ZYX"/> value to convert.</param>
+    /// <returns>The <see cref="global::System.Boolean"/> value that represents the converted <see cref="ZYX"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static implicit operator global::System.Boolean(ZYX value) =>
     value.Value;
 
-  /// <summary>
-  /// Explicitly casts a bool to a ZYX
-  /// </summary>
-  /// <param name="value">The value to cast</param>
-  [global::System.Diagnostics.Contracts.Pure]
+    /// <summary>
+    /// Converts an <see cref="global::System.Boolean"/> value to a <see cref="ZYX"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="global::System.Boolean"/> value to convert.</param>
+    /// <returns>A new <see cref="ZYX"/> value that represents the converted <see cref="global::System.Boolean"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
   public static explicit operator ZYX(global::System.Boolean value) =>
     new(value);
 
