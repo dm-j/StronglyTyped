@@ -2,6 +2,21 @@
 
 namespace StronglyTyped.Common
 {
+    public static class String
+    {
+        public static int Compare<TStrong>(TStrong? left, TStrong? right, StringComparison comparison) where TStrong : struct, IStrongString<TStrong>
+        {
+            return System.String.Compare(left?.Value, right?.Value, comparison);
+        }
+
+        public static int Compare<TLeft, TRight>(TLeft? left, TRight? right, StringComparison comparison) 
+            where TLeft : struct, IStrongString<TLeft>
+            where TRight : struct, IStrongString<TRight>
+        {
+            return System.String.Compare(left?.Value, right?.Value, comparison);
+        }
+    }
+
     public static partial class Extensions
     {
         /// <summary>

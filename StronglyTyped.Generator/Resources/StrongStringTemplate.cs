@@ -1,3 +1,4 @@
+using System;
 /// <summary>
 /// Represents a strongly-typed record struct for a string value
 /// </summary>
@@ -21,16 +22,19 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongString<
     /// </summary>
     public required readonly global::System.String Value { get; init; }
 
-  private static readonly ZYX _empty = new(global::System.String.Empty);
-  public static ZYX Empty => _empty;
+    private static readonly ZYX _empty = new(global::System.String.Empty);
+    public static ZYX Empty => _empty;
 
     /// <summary>
     /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.String"/> value.
     /// </summary>
     /// <param name="value">The <see cref="ZYX"/> value to convert.</param>
     /// <returns>The <see cref="global::System.String"/> value that represents the converted <see cref="ZYX"/> value.</returns>
+    /// <remarks>
+    /// No validation or preprocessing is performed.
+    /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
-  public static explicit operator global::System.String(ZYX value) =>
+    public static explicit operator global::System.String(ZYX value) =>
     value.Value;
 
     /// <summary>
@@ -38,193 +42,275 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongString<
     /// </summary>
     /// <param name="value">The <see cref="global::System.String"/> value to convert.</param>
     /// <returns>A new <see cref="ZYX"/> value that represents the converted <see cref="global::System.String"/> value.</returns>
+    /// <remarks>
+    /// No validation or preprocessing is performed.
+    /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
-  public static explicit operator ZYX(global::System.String value) =>
+    public static explicit operator ZYX(global::System.String value) =>
     new(value);
 
-  [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute]
-  public ZYX(global::System.String value)
-  {
-    global::System.ArgumentNullException.ThrowIfNull(value);
-    Value = value;
-  }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
+    /// </summary>
+    /// <param name="value">Thevalue to use as the underlying value of the <see cref="ZYX"/> struct.</param>
+    /// <remarks>
+    /// No validation or preprocessing is performed.
+    /// </remarks>
+    [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute]
+    public ZYX(global::System.String value)
+    {
+        global::System.ArgumentNullException.ThrowIfNull(value);
+        Value = value;
+    }
 
-  public override global::System.Int32 GetHashCode() =>
-    Value.GetHashCode();
+    public override global::System.Int32 GetHashCode() =>
+      Value.GetHashCode();
 
-  public global::System.Int32 Length => Value.Length;
+    public global::System.Int32 Length => Value.Length;
 
-  public static ZYX Create(global::System.String value) =>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
+    /// </summary>
+    /// <param name="value">Thevalue to use as the underlying value of the <see cref="ZYX"/> struct.</param>
+    /// <remarks>
+    /// No validation or preprocessing is performed.
+    /// </remarks>
+    public static ZYX Create(global::System.String value) =>
     new(value);
 
-  [global::System.Diagnostics.Contracts.Pure]
-  public global::System.Int32 CompareTo(global::System.Object? obj)
-  {
-    var result = obj switch
+    /// <summary>
+    /// Compares the current instance with another object and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+    /// </summary>
+    /// <param name="other">The object to compare with this instance.</param>
+    /// <returns>A 32-bit signed integer that indicates the relative order of the objects being compared.</returns>
+    /// <remarks>
+    /// <0: the current instance precedes the other object in the sort order.
+    /// >0: the current instance follows the other object in the sort order.
+    ///  0: the current instance occurs in the same position in the sort order as the other object.
+    ///  </remarks>
+    [global::System.Diagnostics.Contracts.Pure]
+    public global::System.Int32 CompareTo(global::System.Object? obj)
     {
-      null => 1,
-      ZYX v => CompareTo(v),
-      _ => 1,
-    };
-    _overrideCompareTo(obj, ref result);
-    return result;
-  }
-
-  [global::System.Diagnostics.Contracts.Pure]
-  public global::System.Int32 CompareTo(ZYX other)
-  {
-    var result = Value.CompareTo(other.Value);
-    _overrideCompareTo(other, ref result);
-    return result;
-  }
-
-  [global::System.Diagnostics.Contracts.Pure]
-  public override global::System.String ToString()
-  {
-    var s = Value;
-    _overrideToString(Value, ref s);
-    return s;
-  }
-
-  [global::System.Diagnostics.Contracts.Pure]
-  public static ZYX From(global::System.String value)
-  {
-    var s = value;
-    _preprocess(ref s);
-    return new(s);
-  }
-
-  /// <summary>
-  /// If implemented, the wrapped value will be preprocessed by this method before creation
-  /// Preprocessing runs before validation (if implemented)
-  /// (note that using the constructor or cast operators will not use this method)
-  /// </summary>
-  /// <param name="value">The value which is to be preprocessed</param>
-  static partial void _preprocess(ref global::System.String result);
-
-  /// <summary>
-  /// If implemented, the result of calling CompareTo on the wrapped value will be modified by this method
-  /// </summary>
-  /// <param name="result">The value which will be returned by CompareTo</param>
-  partial void _overrideEquals(ZYX? obj, ref global::System.Boolean result);
-
-  /// <summary>
-  /// If implemented, the result of calling ToString on the wrapped value will be modified by this method
-  /// </summary>
-  /// <param name="result">The value which will be returned by ToString</param>
-  static partial void _overrideToString(global::System.String value, ref global::System.String result);
-
-  /// <summary>
-  /// If implemented, the result of calling CompareTo on the wrapped value will be modified by this method
-  /// </summary>
-  /// <param name="result">The value which will be returned by CompareTo</param>
-  partial void _overrideCompareTo(global::System.Object? obj, ref global::System.Int32 result);
-
-  /// <summary>
-  /// If implemented, this method will be used to check that the value is valid.
-  /// Validation runs after preprocessing (if implemented)
-  /// If errors contains any values validation will be considered to have failed.
-  /// (note that using the constructor or cast operators will not use this method)
-  /// </summary>
-  /// <param name="errors">A set of reasons why the value fails validation</param>
-  partial void _validate(ref global::System.Collections.Generic.HashSet<global::System.String> errors);
-
-  public static global::System.Boolean TryFrom(global::System.String value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result, out global::System.Collections.Generic.IReadOnlySet<global::System.String> failures)
-  {
-    global::System.Collections.Generic.HashSet<global::System.String> validationFailures = new();
-
-    if (value is null)
+        var result = obj switch
+        {
+            null => 1,
+            ZYX v => CompareTo(v),
+            _ => 1,
+        };
+        _overrideCompareTo(obj, ref result);
+        return result;
+    }
+    /// <summary>
+    /// Determines whether this instance and another specified <see cref="ZYX"/> object have the same value.
+    /// </summary>
+    /// <param name="other">The <see cref="ZYX"/> object to compare to this instance.</param>
+    /// <returns><see langword="true"/> if the value of the <paramref name="other"/> parameter is the same as the value of this instance; otherwise, <see langword="false"/>.</returns>
+    public bool Equals(ZYX? other)
     {
-      validationFailures.Add($"Cannot create {typeof(Test1).FullName} from <null>");
-      failures = validationFailures;
-      result = default;
-      return false;
+        bool result = Value.Equals(other?.Value);
+        _overrideEquals(other, ref result);
+        return result;
     }
 
-    var created = From(value);
-
-    created._validate(ref validationFailures);
-
-    if (validationFailures.Count > 0)
+    /// <summary>
+    /// Determines whether this instance and another specified <see cref="ZYX"/> object have the same value.
+    /// </summary>
+    /// <param name="other">The <see cref="ZYX"/> object to compare to this instance.</param>
+    /// <returns><see langword="true"/> if the value of the <paramref name="other"/> parameter is the same as the value of this instance; otherwise, <see langword="false"/>.</returns>
+    public bool Equals(ZYX? other, StringComparison comparison)
     {
-      result = default;
-      failures = validationFailures;
-      return false;
+        bool result = Value.Equals(other?.Value, comparison);
+        _overrideEquals(other, ref result);
+        return result;
     }
 
-    result = created;
-    failures = validationFailures;
-    return true;
-  }
-
-  public static global::System.Boolean TryFrom(global::System.String value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result) =>
-    TryFrom(value, out result, out _);
-
-  [global::System.Diagnostics.Contracts.Pure]
-  public global::System.Collections.Generic.IReadOnlyList<global::System.String> Validate()
-  {
-    global::System.Collections.Generic.HashSet<global::System.String> errors = new();
-    _validate(ref errors);
-
-    return global::System.Linq.Enumerable.ToList(errors).AsReadOnly();
-  }
-
-  public ZYX Map(global::System.Func<string, string> projection)
-  {
-    return From(projection(Value));
-  }
-
-  private class Converter : global::System.ComponentModel.TypeConverter
-  {
-    private static readonly global::System.ComponentModel.TypeConverter _baseConverter;
-
-    static Converter()
+    /// <summary>
+    /// Determines whether this instance and another specified <see cref="ZYX"/> object have the same value.
+    /// </summary>
+    /// <param name="other">The <see cref="ZYX"/> object to compare to this instance.</param>
+    /// <returns><see langword="true"/> if the value of the <paramref name="other"/> parameter is the same as the value of this instance; otherwise, <see langword="false"/>.</returns>
+    /// 
+    /// <remarks>This method can be overridden by implementing partial method <see cref="_overrideEquals"/></remarks>
+    public bool Equals(ZYX? other)
     {
-      _baseConverter = global::System.ComponentModel.TypeDescriptor.GetConverter(typeof(global::System.String));
+        bool result = Value.Equals(other?.Value);
+        _overrideEquals(other, ref result);
+        return result;
     }
 
-    private readonly Type[] _knownTypes = new[]
+    /// <summary>
+    /// Compares the current instance with another object and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+    /// </summary>
+    /// <param name="other">The object to compare with this instance.</param>
+    /// <returns>A 32-bit signed integer that indicates the relative order of the objects being compared.</returns>
+    /// <remarks>
+    /// <0: the current instance precedes the other object in the sort order.
+    /// >0: the current instance follows the other object in the sort order.
+    ///  0: the current instance occurs in the same position in the sort order as the other object.
+    ///  This method can be overridden by implementing <see cref="_overrideCompareTo"/>
+    ///  </remarks>
+    [global::System.Diagnostics.Contracts.Pure]
+    public global::System.Int32 CompareTo(ZYX? other)
     {
+        var result = Value.CompareTo(other?.Value);
+        _overrideCompareTo(other, ref result);
+        return result;
+    }
+
+    /// <summary>
+    /// Returns the string representation of this <see cref="ZYX"/> instance, using the default format specifier.
+    /// </summary>
+    /// <returns>A string representation of the value of this <see cref="ZYX"/> instance.</returns>
+    /// <remarks>
+    /// This can be overridden by implementing the partial method <see cref="_overrideToString"/>
+    /// </remarks>
+    [global::System.Diagnostics.Contracts.Pure]
+    public override global::System.String ToString()
+    {
+        var s = Value;
+        _overrideToString(Value, ref s);
+        return s;
+    }
+
+    [global::System.Diagnostics.Contracts.Pure]
+    public static ZYX From(global::System.String value)
+    {
+        var s = value;
+        _preprocess(ref s);
+        return new(s);
+    }
+
+    /// <summary>
+    /// If implemented, the wrapped value will be preprocessed by this method before creation
+    /// Preprocessing runs before validation (if implemented)
+    /// (note that using the constructor or cast operators will not use this method)
+    /// </summary>
+    /// <param name="value">The value which is to be preprocessed</param>
+    static partial void _preprocess(ref global::System.String result);
+
+    /// <summary>
+    /// If implemented, the result of calling CompareTo on the wrapped value will be modified by this method
+    /// </summary>
+    /// <param name="result">The value which will be returned by CompareTo</param>
+    partial void _overrideEquals(ZYX? obj, ref global::System.Boolean result);
+
+    /// <summary>
+    /// If implemented, the result of calling ToString on the wrapped value will be modified by this method
+    /// </summary>
+    /// <param name="result">The value which will be returned by ToString</param>
+    static partial void _overrideToString(global::System.String value, ref global::System.String result);
+
+    /// <summary>
+    /// If implemented, the result of calling CompareTo on the wrapped value will be modified by this method
+    /// </summary>
+    /// <param name="result">The value which will be returned by CompareTo</param>
+    partial void _overrideCompareTo(global::System.Object? obj, ref global::System.Int32 result);
+
+    /// <summary>
+    /// If implemented, this method will be used to check that the value is valid.
+    /// Validation runs after preprocessing (if implemented)
+    /// If errors contains any values validation will be considered to have failed.
+    /// (note that using the constructor or cast operators will not use this method)
+    /// </summary>
+    /// <param name="errors">A set of reasons why the value fails validation</param>
+    partial void _validate(ref global::System.Collections.Generic.HashSet<global::System.String> errors);
+
+    public static global::System.Boolean TryFrom(global::System.String value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result, out global::System.Collections.Generic.IReadOnlySet<global::System.String> failures)
+    {
+        global::System.Collections.Generic.HashSet<global::System.String> validationFailures = new();
+
+        if (value is null)
+        {
+            validationFailures.Add($"Cannot create {typeof(Test1).FullName} from <null>");
+            failures = validationFailures;
+            result = default;
+            return false;
+        }
+
+        var created = From(value);
+
+        created._validate(ref validationFailures);
+
+        if (validationFailures.Count > 0)
+        {
+            result = default;
+            failures = validationFailures;
+            return false;
+        }
+
+        result = created;
+        failures = validationFailures;
+        return true;
+    }
+
+    public static global::System.Boolean TryFrom(global::System.String value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result) =>
+      TryFrom(value, out result, out _);
+
+    [global::System.Diagnostics.Contracts.Pure]
+    public global::System.Collections.Generic.IReadOnlyList<global::System.String> Validate()
+    {
+        global::System.Collections.Generic.HashSet<global::System.String> errors = new();
+        _validate(ref errors);
+
+        return global::System.Linq.Enumerable.ToList(errors).AsReadOnly();
+    }
+
+    public ZYX Map(global::System.Func<string, string> projection)
+    {
+        return From(projection(Value));
+    }
+
+    private class Converter : global::System.ComponentModel.TypeConverter
+    {
+        private static readonly global::System.ComponentModel.TypeConverter _baseConverter;
+
+        static Converter()
+        {
+            _baseConverter = global::System.ComponentModel.TypeDescriptor.GetConverter(typeof(global::System.String));
+        }
+
+        private readonly Type[] _knownTypes = new[]
+        {
       typeof(ZYX),
       typeof(global::System.String),
     };
 
-    public override global::System.Boolean CanConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type sourceType) =>
-      _knownTypes.Contains(sourceType) ||
-      (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.String)));
+        public override global::System.Boolean CanConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type sourceType) =>
+          _knownTypes.Contains(sourceType) ||
+          (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.String)));
 
-    public override global::System.Boolean CanConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type? destinationType) =>
-      destinationType == typeof(ZYX);
+        public override global::System.Boolean CanConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type? destinationType) =>
+          destinationType == typeof(ZYX);
 
-    public override global::System.Object? ConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object value)
-    {
-      return value switch
-      {
-        null => null,
-        ZYX v => v,
-        global::System.String v => new ZYX(v),
-        var v when _baseConverter.CanConvertFrom(v.GetType()) && _baseConverter.CanConvertTo(typeof(global::System.String)) =>
-          ConvertFrom(context, culture, _baseConverter.ConvertTo(context, culture, v, typeof(global::System.String))!)!,
-        _ => throw new global::System.InvalidCastException($"Cannot convert {value ?? "<null>"} ({value?.GetType().Name ?? "<null>"}) to {nameof(ZYX)}>"),
-      };
+        public override global::System.Object? ConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object value)
+        {
+            return value switch
+            {
+                null => null,
+                ZYX v => v,
+                global::System.String v => new ZYX(v),
+                var v when _baseConverter.CanConvertFrom(v.GetType()) && _baseConverter.CanConvertTo(typeof(global::System.String)) =>
+                  ConvertFrom(context, culture, _baseConverter.ConvertTo(context, culture, v, typeof(global::System.String))!)!,
+                _ => throw new global::System.InvalidCastException($"Cannot convert {value ?? "<null>"} ({value?.GetType().Name ?? "<null>"}) to {nameof(ZYX)}>"),
+            };
+        }
+
+        public override global::System.Object? ConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object? value, global::System.Type destinationType)
+        {
+            if (destinationType == typeof(global::System.String))
+            {
+                if (value is ZYX strong)
+                    return strong.Value.ToString();
+
+                return _baseConverter.ConvertToString(value);
+            }
+
+            if (destinationType != typeof(ZYX))
+                throw new InvalidCastException($"Cannot convert to Type {destinationType.FullName ?? "<null>"}");
+
+            return ConvertFrom(context, culture, value!);
+        }
     }
-
-    public override global::System.Object? ConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object? value, global::System.Type destinationType)
-    {
-      if (destinationType == typeof(global::System.String))
-      {
-        if (value is ZYX strong)
-          return strong.Value.ToString();
-
-        return _baseConverter.ConvertToString(value);
-      }
-
-      if (destinationType != typeof(ZYX))
-        throw new InvalidCastException($"Cannot convert to Type {destinationType.FullName ?? "<null>"}");
-
-      return ConvertFrom(context, culture, value!);
-    }
-  }
 
 #if (USE_SYSTEM_TEXT_JSON)
   /// <summary>

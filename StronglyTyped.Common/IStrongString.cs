@@ -1,10 +1,13 @@
-﻿namespace StronglyTyped
+﻿using System.Numerics;
+
+namespace StronglyTyped
 {
     public interface IStrongString<TSelf> : 
         IStrongType<TSelf, string>,
         IEquatable<TSelf>,
         IComparable,
-        IComparable<TSelf>
+        IComparable<TSelf>,
+        IEqualityOperators<TSelf, TSelf, bool>
         where TSelf : struct, IStrongString<TSelf>
     {
         int Length { get; }
@@ -21,5 +24,12 @@
         /// </summary>
         /// <param name="value">The TSelf to convert</param>
         static abstract explicit operator string(TSelf value);
+
+        static abstract bool operator ==(TSelf left, string right);
+        static abstract bool operator !=(TSelf left, string right);
+        static abstract bool operator ==(string left, TSelf right);
+        static abstract bool operator !=(string left, TSelf right);
+
+
     }
 }
