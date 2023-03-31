@@ -43,7 +43,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static explicit operator global::System.UInt32(ZYX value) =>
-    value.Value;
+        value.Value;
 
     /// <summary>
     /// Converts an <see cref="global::System.UInt32"/> value to a <see cref="ZYX"/> value.
@@ -55,23 +55,23 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static explicit operator ZYX(global::System.UInt32 value) =>
-    new(value);
+        new(value);
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator >(ZYX left, ZYX right) =>
-    left.CompareTo(right) > 0;
+        left.CompareTo(right) > 0;
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator >=(ZYX left, ZYX right) =>
-    left.CompareTo(right) >= 0;
+        left.CompareTo(right) >= 0;
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator <(ZYX left, ZYX right) =>
-    left.CompareTo(right) < 0;
+        left.CompareTo(right) < 0;
 
     [global::System.Diagnostics.Contracts.Pure]
     public static global::System.Boolean operator <=(ZYX left, ZYX right) =>
-    left.CompareTo(right) <= 0;
+        left.CompareTo(right) <= 0;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
@@ -87,7 +87,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     }
 
     public override global::System.Int32 GetHashCode() =>
-    Value.GetHashCode();
+        Value.GetHashCode();
 
     /// <summary>
     /// Determines whether this instance and another specified <see cref="ZYX"/> object have the same value.
@@ -111,7 +111,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     /// No validation or preprocessing is performed.
     /// </remarks>
     public static ZYX Create(global::System.UInt32 value) =>
-    new(value);
+        new(value);
 
     /// <summary>
     /// Parses the string representation of a ZYX value.
@@ -124,7 +124,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.String? s) =>
-    new(global::System.UInt32.Parse(s!));
+        new(global::System.UInt32.Parse(s!));
 
     /// <summary>
     /// Converts the span representation of a ZYX value to its <see cref="ZYX"/> equivalent.
@@ -137,7 +137,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.ReadOnlySpan<global::System.Char> s, global::System.IFormatProvider? provider) =>
-    new(global::System.UInt32.Parse(s, provider));
+        new(global::System.UInt32.Parse(s, provider));
 
     /// <summary>
     /// Converts the string representation of a value in a specified culture-specific format to its <see cref="ZYX"/> equivalent.
@@ -152,10 +152,10 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.String s, global::System.IFormatProvider? provider) =>
-    new(global::System.UInt32.Parse(s, provider));
+        new(global::System.UInt32.Parse(s, provider));
 
     public static global::System.Boolean TryParse(global::System.String? s, [global::System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out ZYX result) =>
-    TryParse(s, null, out result);
+        TryParse(s, null, out result);
 
     /// <summary>
     /// Compares the current instance with another object and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
@@ -202,7 +202,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
 
     [global::System.Diagnostics.Contracts.Pure]
     public string ToString(global::System.String? format, global::System.IFormatProvider? formatProvider) =>
-    Value.ToString(format, formatProvider);
+        Value.ToString(format, formatProvider);
 
     /// <summary>
     /// Returns the string representation of this <see cref="ZYX"/> instance, using the default format specifier.
@@ -220,7 +220,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     }
 
     public global::System.Boolean TryFormat(global::System.Span<global::System.Char> destination, out global::System.Int32 charsWritten, global::System.ReadOnlySpan<global::System.Char> format, global::System.IFormatProvider? _) =>
-    Value.TryFormat(destination, out charsWritten, format);
+        Value.TryFormat(destination, out charsWritten, format);
 
     /// <summary>
     /// Creates a new instance of the <see cref="ZYX"/> struct from a value.
@@ -293,7 +293,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     }
 
     public static global::System.Boolean TryFrom(global::System.UInt32 value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result) =>
-    TryFrom(value, out result, out _);
+        TryFrom(value, out result, out _);
 
     public static global::System.Boolean TryFrom(global::System.UInt32 value, [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX? result, out IReadOnlySet<string> failures)
     {
@@ -316,7 +316,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
     }
 
     public static global::System.Boolean TryFrom(global::System.UInt32 value, [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX? result) =>
-    TryFrom(value, out result, out _);
+        TryFrom(value, out result, out _);
 
     [global::System.Diagnostics.Contracts.Pure]
     public global::System.Collections.Generic.IReadOnlyList<global::System.String> Validate()
@@ -330,11 +330,11 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.ReadOnlySpan<char> s, global::System.Globalization.NumberStyles style, global::System.IFormatProvider? provider) =>
-    new(global::System.UInt32.Parse(s, style, provider));
+        new(global::System.UInt32.Parse(s, style, provider));
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.String s, global::System.Globalization.NumberStyles style, IFormatProvider? provider) =>
-    new(global::System.UInt32.Parse(s, style, provider));
+        new(global::System.UInt32.Parse(s, style, provider));
 
     public static global::System.Boolean TryParse(global::System.ReadOnlySpan<global::System.Char> s, global::System.IFormatProvider? provider, [global::System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out ZYX result)
     {
@@ -400,11 +400,11 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUInt<ZY
         };
 
         public override global::System.Boolean CanConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type sourceType) =>
-        _knownTypes.Contains(sourceType) ||
-        (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.UInt32)));
+            _knownTypes.Contains(sourceType) ||
+            (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.UInt32)));
 
         public override global::System.Boolean CanConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type? destinationType) =>
-        destinationType == typeof(ZYX);
+            destinationType == typeof(ZYX);
 
         public override global::System.Object? ConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object value)
         {

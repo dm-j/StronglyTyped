@@ -422,11 +422,11 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongDecimal
         };
 
         public override global::System.Boolean CanConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type sourceType) =>
-        _knownTypes.Contains(sourceType) ||
-        (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Decimal)));
+            _knownTypes.Contains(sourceType) ||
+            (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Decimal)));
 
         public override global::System.Boolean CanConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type? destinationType) =>
-        destinationType == typeof(ZYX);
+            destinationType == typeof(ZYX);
 
         public override global::System.Object? ConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object value)
         {

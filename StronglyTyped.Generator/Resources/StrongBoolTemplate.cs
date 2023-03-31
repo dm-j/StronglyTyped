@@ -53,7 +53,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static implicit operator global::System.Boolean(ZYX value) =>
-    value.Value;
+        value.Value;
 
     /// <summary>
     /// Converts an <see cref="global::System.Boolean"/> value to a <see cref="ZYX"/> value.
@@ -65,7 +65,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static explicit operator ZYX(global::System.Boolean value) =>
-    new(value);
+        new(value);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
@@ -100,7 +100,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
     /// No validation or preprocessing is performed.
     /// </remarks>
     public static ZYX Create(global::System.Boolean value) =>
-    new(value);
+        new(value);
 
     /// <summary>
     /// Parses the string representation of a ZYX value.
@@ -113,7 +113,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.String? s) =>
-    new(global::System.Boolean.Parse(s!));
+        new(global::System.Boolean.Parse(s!));
 
     /// <summary>
     /// Converts the span representation of a ZYX value to its <see cref="ZYX"/> equivalent.
@@ -126,7 +126,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX Parse(global::System.ReadOnlySpan<global::System.Char> s) =>
-    new(global::System.Boolean.Parse(s));
+        new(global::System.Boolean.Parse(s));
 
     /// <summary>
     /// Attempts to parse a ZYX from a string representation of a bool
@@ -135,7 +135,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
     /// <param name="result">Out parameter that will contain the result</param>
     /// <returns>Whether or not the parse succeeded</returns>
     public static global::System.Boolean TryParse(global::System.String? s, [global::System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out ZYX result) =>
-    TryParse(s, null, out result);
+        TryParse(s, null, out result);
 
     /// <summary>
     /// Compares the current instance with another object and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
@@ -192,7 +192,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
     }
 
     public global::System.Boolean TryFormat(global::System.Span<global::System.Char> destination, out global::System.Int32 charsWritten, global::System.ReadOnlySpan<global::System.Char> _) =>
-    Value.TryFormat(destination, out charsWritten);
+        Value.TryFormat(destination, out charsWritten);
 
     /// <summary>
     /// Creates a new instance of the <see cref="ZYX"/> struct from a value.
@@ -268,11 +268,11 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
         };
 
         public override global::System.Boolean CanConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type sourceType) =>
-        _knownTypes.Contains(sourceType) ||
-        (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Boolean)));
+            _knownTypes.Contains(sourceType) ||
+            (_baseConverter.CanConvertFrom(sourceType) && _baseConverter.CanConvertTo(typeof(global::System.Boolean)));
 
         public override global::System.Boolean CanConvertTo(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Type? destinationType) =>
-        destinationType == typeof(ZYX) || destinationType == typeof(global::System.String);
+            destinationType == typeof(ZYX) || destinationType == typeof(global::System.String);
 
         public override global::System.Object? ConvertFrom(global::System.ComponentModel.ITypeDescriptorContext? context, global::System.Globalization.CultureInfo? culture, global::System.Object value)
         {
