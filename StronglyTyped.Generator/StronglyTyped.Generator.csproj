@@ -18,6 +18,8 @@
         <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<EnforceExtentedAnalyzerRules>true</EnforceExtentedAnalyzerRules>
+		<PackageProjectUrl></PackageProjectUrl>
+		<RepositoryUrl>https://github.com/dm-j/StronglyTyped</RepositoryUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
