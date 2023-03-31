@@ -52,7 +52,16 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongGuid<ZY
   public static explicit operator ZYX(global::System.Guid value) =>
     new(value);
 
-  [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute]
+    /// <summary>
+    /// Parses a <see cref="global::System.String"/> value to a <see cref="global::System.Guid"/>, then a <see cref="ZYX"/> value.
+    /// </summary>
+    /// <param name="value">The <see cref="global::System.String"/> value to convert.</param>
+    /// <returns>A new <see cref="ZYX"/> value that represents the parsed then converted <see cref="global::System.Guid"/> value.</returns>
+    [global::System.Diagnostics.Contracts.Pure]
+    public static explicit operator ZYX(global::System.String value) =>
+        Parse(value);
+
+    [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute]
   public ZYX(global::System.Guid value)
   {
     Value = value;

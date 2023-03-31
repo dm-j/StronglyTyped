@@ -44,7 +44,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
   public bool IsFalse => !Value;
 
     /// <summary>
-    /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.Boolean"/> value.
+    /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.Boolean"/> value (implicitly).
     /// </summary>
     /// <param name="value">The <see cref="ZYX"/> value to convert.</param>
     /// <returns>The <see cref="global::System.Boolean"/> value that represents the converted <see cref="ZYX"/> value.</returns>

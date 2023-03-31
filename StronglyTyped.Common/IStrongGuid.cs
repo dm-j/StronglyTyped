@@ -31,5 +31,11 @@ namespace StronglyTyped
         /// </summary>
         /// <param name="value">The TSelf to convert</param>
         static abstract explicit operator Guid(TSelf value);
+
+        /// <summary>
+        /// Explicit cast operator that turns a string into a TSelf. Does not perform validation or preprocessing
+        /// </summary>
+        /// <param name="value">The TBase to convert</param>
+        static abstract explicit operator TSelf(string value);
     }
 }
