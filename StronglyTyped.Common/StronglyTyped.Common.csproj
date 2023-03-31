@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Title>Strongly Typed</Title>
+    <Authors>David Markham-Jones</Authors>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <Description>Interfaces and extensions for use with the Strongly Typed source generator</Description>
+    <Copyright>2023 David Markham-Jones</Copyright>
+    <PackageTags>types</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
