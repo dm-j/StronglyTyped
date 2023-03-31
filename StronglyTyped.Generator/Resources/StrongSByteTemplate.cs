@@ -294,9 +294,6 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongSByte<Z
     /// <param name="errors">A set of reasons why the value fails validation</param>
     partial void _validate(ref global::System.Collections.Generic.HashSet<global::System.String> errors);
 
-    static partial void _minValue(ref global::System.SByte min);
-    static partial void _maxValue(ref global::System.SByte max);
-
     public static global::System.Boolean TryFrom(global::System.SByte value, [global::System.Diagnostics.CodeAnalysis.MaybeNull, global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result, out global::System.Collections.Generic.IReadOnlySet<global::System.String> failures)
     {
         global::System.Collections.Generic.HashSet<global::System.String> validationFailures = new();
