@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 /// <summary>
 /// Represents a strongly-typed record struct for a boolean value
 /// </summary>
@@ -244,10 +245,10 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongBool<ZY
         return false;
     }
 
-    public static bool TryFrom(bool value, [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result, out IReadOnlySet<string> failures)
+    public static bool TryFrom(bool value, [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out ZYX result, out IReadOnlySet<global::System.String> failures)
     {
         result = From(value);
-        failures = new HashSet<string>();
+        failures = new HashSet<global::System.String>();
         return true;
     }
 

@@ -25,13 +25,13 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongUShort<
     /// Gets a <see cref="ZYX"/> instance representing the value of 1.
     /// </summary>
     public static ZYX One => _one;
-    private readonly static ZYX _one = new(1);
+    private readonly static ZYX _one = new((global::System.UInt16)1);
 
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the value of 0.
     /// </summary>
     public static ZYX Zero => _zero;
-    private readonly static ZYX _zero = new(0);
+    private readonly static ZYX _zero = new((global::System.UInt16)0);
 
     /// <summary>
     /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.UInt16"/> value.

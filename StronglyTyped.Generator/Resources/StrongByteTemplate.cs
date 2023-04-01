@@ -21,13 +21,13 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongByte<ZY
     /// </summary>
     public required readonly global::System.Byte Value { get; init; }
 
-    private readonly static ZYX _one = new(1);
+    private readonly static ZYX _one = new((global::System.Byte)1);
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the value of 1.
     /// </summary>
     public static ZYX One => _one;
 
-    private readonly static ZYX _zero = new(0);
+    private readonly static ZYX _zero = new((global::System.Byte)0);
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the binary value of 0.
     /// </summary>

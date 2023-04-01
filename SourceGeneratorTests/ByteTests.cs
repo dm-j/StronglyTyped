@@ -59,13 +59,19 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void AsNullableForNullString()
+        public void AsNullable()
         {
-            byte? value = null;
+            byte? value1 = null;
 
-            Test1? actual = value.AsNullable<Test1>();
+            Test1? actual1 = value1.AsNullable<Test1>();
 
-            Assert.False(actual.HasValue);
+            Assert.False(actual1.HasValue);
+
+            byte? value2 = (byte)7;
+
+            Test1? actual2 = value2.AsNullable<Test1>();
+
+            Assert.True(actual2.HasValue);
         }
 
         [Fact]

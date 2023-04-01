@@ -25,19 +25,19 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongFloat<Z
     /// Gets a <see cref="ZYX"/> instance representing the value of -1.
     /// </summary>
     public static ZYX NegativeOne => _negativeOne;
-    private readonly static ZYX _negativeOne = new(-1);
+    private readonly static ZYX _negativeOne = new(-1f);
 
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the value of 1.
     /// </summary>
     public static ZYX One => _one;
-    private readonly static ZYX _one = new(1);
+    private readonly static ZYX _one = new(1f);
 
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the value of 0.
     /// </summary>
     public static ZYX Zero => _zero;
-    private readonly static ZYX _zero = new(0);
+    private readonly static ZYX _zero = new(0f);
 
     /// <summary>
     /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.Single"/> value.

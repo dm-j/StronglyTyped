@@ -25,19 +25,19 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongShort<Z
     /// Gets a <see cref="ZYX"/> instance representing the value of -1.
     /// </summary>
     public static ZYX NegativeOne => _negativeOne;
-    private readonly static ZYX _negativeOne = new(-1);
+    private readonly static ZYX _negativeOne = new((global::System.Int16)-1);
 
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the value of 1.
     /// </summary>
     public static ZYX One => _one;
-    private readonly static ZYX _one = new(1);
+    private readonly static ZYX _one = new((global::System.Int16)1);
 
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the value of 0.
     /// </summary>
     public static ZYX Zero => _zero;
-    private readonly static ZYX _zero = new(0);
+    private readonly static ZYX _zero = new((global::System.Int16)0);
 
     /// <summary>
     /// Converts a <see cref="ZYX"/> value to an <see cref="global::System.Int16"/> value.
