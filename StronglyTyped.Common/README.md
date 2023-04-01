@@ -98,6 +98,13 @@ partial void _overrideCompareTo(global::System.Object? obj, ref global::System.I
 partial void _validate(ref global::System.Collections.Generic.HashSet<global::System.String> errors);
 ```
 
+# What about JSON support?
+These types will serialize and deserialize exactly like the types they wrap. There are currently two leading
+libraries that handle JSON support for C#, so define zero, one, or both of the following Custom Symbols in 
+your project: 
+* `USE_NEWTONSOFT_JSON`
+* `USE_SYSTEM_TEXT_JSON`
+
 # What is included so far?
 
 * `StrongBool`
