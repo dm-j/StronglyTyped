@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 /// <summary>
 /// Represents a strongly-typed record struct for a boolean value
 /// </summary>

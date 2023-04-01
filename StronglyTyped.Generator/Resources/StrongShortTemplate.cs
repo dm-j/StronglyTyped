@@ -25,7 +25,7 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongShort<Z
     /// Gets a <see cref="ZYX"/> instance representing the value of -1.
     /// </summary>
     public static ZYX NegativeOne => _negativeOne;
-    private readonly static ZYX _negativeOne = new((global::System.Int16)-1);
+    private readonly static ZYX _negativeOne = new(-(global::System.Int16)1);
 
     /// <summary>
     /// Gets a <see cref="ZYX"/> instance representing the value of 1.
