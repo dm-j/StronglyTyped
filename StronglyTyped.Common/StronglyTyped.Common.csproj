@@ -5,7 +5,8 @@
     <Nullable>enable</Nullable>
     <Title>Strongly Typed</Title>
     <Authors>David Markham-Jones</Authors>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <PackageVersion>$([System.DateTime]::Now.ToString(&quot;1.yy.MMdd.HHmm&quot;))</PackageVersion>
+    <AssemblyVersion>$([System.DateTime]::Now.ToString(&quot;1.yy.MMdd.HHmm&quot;))</AssemblyVersion>
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
     <Description>Interfaces and extensions for use with the Strongly Typed source generator</Description>
     <Copyright>2023 David Markham-Jones</Copyright>

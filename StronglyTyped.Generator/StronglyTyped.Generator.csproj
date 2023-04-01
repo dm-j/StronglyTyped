@@ -11,15 +11,17 @@
         <Description>A source generator for creating strongly typed versions of simple types</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <PackageVersion>$([System.DateTime]::Now.ToString(&quot;1.yy.MMdd.HHmm&quot;))</PackageVersion>
+        <AssemblyVersion>$([System.DateTime]::Now.ToString(&quot;1.yy.MMdd.HHmm&quot;))</AssemblyVersion>
         <Title>Strong Type Generator</Title>
         <Authors>David Markham-Jones</Authors>
         <Copyright>2023 David Markham-Jones</Copyright>
         <PackageTags>source generator, incremental source generator, types, strong types, ids</PackageTags>
         <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<EnforceExtentedAnalyzerRules>true</EnforceExtentedAnalyzerRules>
-		<PackageProjectUrl></PackageProjectUrl>
-		<RepositoryUrl>https://github.com/dm-j/StronglyTyped</RepositoryUrl>
+        <EnforceExtentedAnalyzerRules>true</EnforceExtentedAnalyzerRules>
+        <PackageProjectUrl></PackageProjectUrl>
+        <RepositoryUrl>https://github.com/dm-j/StronglyTyped</RepositoryUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

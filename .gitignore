@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 # Generated Files
 *.g.cs
+*.generated.cs

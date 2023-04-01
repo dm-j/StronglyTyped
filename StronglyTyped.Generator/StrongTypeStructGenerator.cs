@@ -74,7 +74,7 @@ public class StrongTypeGenerator : IIncrementalGenerator
 
         foreach (var (fileName, content) in recordsToGenerate)
         {
-            context.AddSource($"{fileName}.g.cs", SourceText.From(content, Encoding.UTF8));
+            context.AddSource($"{fileName}.generated.cs", SourceText.From(content, Encoding.UTF8));
         }
     }
 
