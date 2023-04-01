@@ -89,11 +89,11 @@ public readonly partial record struct ZYX : global::StronglyTyped.IStrongShort<Z
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX operator ++(ZYX value) =>
-        From((global::System.Int16)(value.Value + 1));
+        From((global::System.Int16)(value.Value + (global::System.Int16)1));
 
     [global::System.Diagnostics.Contracts.Pure]
     public static ZYX operator --(ZYX value) =>
-        From((global::System.Int16)(value.Value - 1));
+        From((global::System.Int16)(value.Value - (global::System.Int16)1));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ZYX"/> struct with the specified value.
