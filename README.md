@@ -8,6 +8,7 @@ When you use StronglyTyped, you can create strongly typed values in your code th
 However, if you use StronglyTyped, you can define a `LastName` by applying the `[StrongString]` Attribute and using StronglyTyped.Generator. This will generate a full implementation of an immutable record struct that represents a last name value. This struct is strongly typed, which means that it has a specific type that is separate from other types in your code. This makes it clear what the value represents and what operations are valid on it.
 
 ```csharp
+[StrongString] public partial record struct FirstName;
 [StrongString] public partial record struct LastName;
 ```
 Using this struct, you can create strongly typed values for last names. For example:
