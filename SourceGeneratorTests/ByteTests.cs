@@ -1,18 +1,17 @@
 ﻿using Newtonsoft.Json;
-using StronglyTyped;
-using StronglyTyped.Common;
+using StrictlyTyped;
 
 namespace SourceGeneratorTests
 {
-    [StrongByte] public partial record struct TestNotWrapped;
+    [StrictByte] public partial record struct TestNotWrapped;
 
     public partial class ByteTests
     { 
-        [StrongByte] public partial record struct Test1;
-        [StrongByte] public partial record struct Test2;
-        [StrongByte] public partial record struct ZYX;
+        [StrictByte] public partial record struct Test1;
+        [StrictByte] public partial record struct Test2;
+        [StrictByte] public partial record struct ZYX;
 
-        [StrongByte] public partial record struct Fussy
+        [StrictByte] public partial record struct Fussy
         {
             private const byte _max = (byte)100;
 
@@ -23,7 +22,7 @@ namespace SourceGeneratorTests
             }
         }
 
-        [StrongByte]
+        [StrictByte]
         public partial record struct OverrideToString
         {
             static partial void _overrideToString(byte value, ref string result)
@@ -32,7 +31,7 @@ namespace SourceGeneratorTests
             }
         }
 
-        [StrongByte]
+        [StrictByte]
         public partial record struct PreprocessesToEven
         {
             static partial void _preprocess(ref byte result)
@@ -50,7 +49,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void AsCreatesStrongTypeWithValue()
+        public void AsCreatesStrictTypeWithValue()
         {
             byte value = 1;
             Test1 test = value.As<Test1>();
@@ -83,7 +82,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithSameValueAreEqual()
+        public void StrictTypesSameTypeWithSameValueAreEqual()
         {
             Test1 one = ((byte)122).As<Test1>();
             Test1 two = ((byte)122).As<Test1>();
@@ -150,7 +149,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithDifferentValueAreNotEqual()
+        public void StrictTypesSameTypeWithDifferentValueAreNotEqual()
         {
             Test1 one = ((byte)122).As<Test1>();
             Test1 two = ((byte)3).As<Test1>();
@@ -167,7 +166,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesDifferentTypeWithSameValueAreNotEqual()
+        public void StrictTypesDifferentTypeWithSameValueAreNotEqual()
         {
             Test1 one = ((byte)122).As<Test1>();
             Test2 two = ((byte)122).As<Test2>();

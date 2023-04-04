@@ -1,14 +1,12 @@
 ﻿using Newtonsoft.Json;
-using StronglyTyped;
-using StronglyTyped.Common;
-
+using StrictlyTyped;
 
 namespace SourceGeneratorTests
 {
     public partial class DoubleTests
     {
-        [StrongDouble] public partial record struct Test1;
-        [StrongDouble] public partial record struct Test2;
+        [StrictDouble] public partial record struct Test1;
+        [StrictDouble] public partial record struct Test2;
 
         [Fact]
         public Test1 As()
@@ -19,7 +17,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void AsCreatesStrongTypeWithValue()
+        public void AsCreatesStrictTypeWithValue()
         {
             var value = 1d;
             Test1 test = value.As<Test1>();
@@ -46,7 +44,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithSameValueAreEqual()
+        public void StrictTypesSameTypeWithSameValueAreEqual()
         {
             Test1 one = 1224d.As<Test1>();
             Test1 two = 1224d.As<Test1>();
@@ -113,7 +111,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithDifferentValueAreNotEqual()
+        public void StrictTypesSameTypeWithDifferentValueAreNotEqual()
         {
             Test1 one = 1224d.As<Test1>();
             Test1 two = 4346d.As<Test1>();
@@ -130,7 +128,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesDifferentTypeWithSameValueAreNotEqual()
+        public void StrictTypesDifferentTypeWithSameValueAreNotEqual()
         {
             Test1 one = 1224d.As<Test1>();
             Test2 two = 1224d.As<Test2>();

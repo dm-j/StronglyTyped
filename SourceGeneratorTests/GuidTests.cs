@@ -1,14 +1,13 @@
 using Newtonsoft.Json;
-using StronglyTyped;
-using StronglyTyped.Common;
+using StrictlyTyped;
 using System.ComponentModel;
 
 namespace SourceGeneratorTests
 {
     public partial class GuidTests
     {
-        [StrongGuid] public partial record struct Test1;
-        [StrongGuid] public partial record struct Test2;
+        [StrictGuid] public partial record struct Test1;
+        [StrictGuid] public partial record struct Test2;
 
         [Fact]
         public Test1 As()
@@ -19,7 +18,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void AsCreatesStrongTypeWithValue()
+        public void AsCreatesStrictTypeWithValue()
         {
             var value = Guid.NewGuid();
 
@@ -58,7 +57,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithSameValueAreEqual()
+        public void StrictTypesSameTypeWithSameValueAreEqual()
         {
             Guid value = Guid.NewGuid();
 
@@ -91,7 +90,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithDifferentValueAreNotEqual()
+        public void StrictTypesSameTypeWithDifferentValueAreNotEqual()
         {
             Guid value1 = Guid.NewGuid();
             Guid value2 = Guid.NewGuid();
@@ -121,7 +120,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesDifferentTypeWithSameValueAreNotEqual()
+        public void StrictTypesDifferentTypeWithSameValueAreNotEqual()
         {
             Guid value1 = Guid.NewGuid();
             Guid value2 = Guid.NewGuid();
@@ -226,7 +225,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void TryAsTrueAndTStrongFromGuid()
+        public void TryAsTrueAndTStrictFromGuid()
         {
             Guid guid = Guid.NewGuid();
             Test1 expected = Test1.From(guid);

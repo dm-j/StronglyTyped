@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
-using StronglyTyped;
-using StronglyTyped.Common;
+using StrictlyTyped;
 using System.ComponentModel;
 
 namespace SourceGeneratorTests
 {
     public partial class StringTests
     {
-        [StrongString] public partial record struct Test1;
-        [StrongString] public partial record struct Test2;
+        [StrictString] public partial record struct Test1;
+        [StrictString] public partial record struct Test2;
 
         [Fact]
         public Test1 As()
@@ -17,7 +16,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void AsCreatesStrongTypeWithValue()
+        public void AsCreatesStrictTypeWithValue()
         {
             string value = "Hello";
             Test1 hello = value.As<Test1>();
@@ -44,7 +43,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithSameValueAreEqual()
+        public void StrictTypesSameTypeWithSameValueAreEqual()
         {
             Test1 one = "Beep".As<Test1>();
             Test1 two = "Beep".As<Test1>();
@@ -71,7 +70,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesSameTypeWithDifferentValueAreNotEqual()
+        public void StrictTypesSameTypeWithDifferentValueAreNotEqual()
         {
             Test1 one = "Boop".As<Test1>();
             Test1 two = "Beep".As<Test1>();
@@ -88,7 +87,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void StrongTypesDifferentTypeWithSameValueAreNotEqual()
+        public void StrictTypesDifferentTypeWithSameValueAreNotEqual()
         {
             Test1 one = "Boop".As<Test1>();
             Test2 two = "Boop".As<Test2>();
@@ -160,7 +159,7 @@ namespace SourceGeneratorTests
         }
 
         [Fact]
-        public void TryAsTrueAndTStrongFromGuid()
+        public void TryAsTrueAndTStrictFromGuid()
         {
             string value = "Beep";
             Test1 expected = Test1.From(value);
