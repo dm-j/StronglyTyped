@@ -276,6 +276,22 @@ namespace SourceGeneratorTests
             Assert.Equal(JsonConvert.SerializeObject(value), result, StringComparer.InvariantCultureIgnoreCase);
         }
 
+        public class TestSerializeProperty
+        {
+            public Test1 Test1 { get; set; }
+        }
+
+        [Fact]
+        public void SerializeSerializesPropertyNewtonsoftJson()
+        {
+            Test1 value = "Beep".As<Test1>();
+            var valueToSerialize = new TestSerializeProperty { Test1 = value };
+
+            var result = JsonConvert.SerializeObject(valueToSerialize);
+            Assert.Equal("{\"Test1\":\"Beep\"}", result, StringComparer.InvariantCultureIgnoreCase);
+        }
+
+
         [Fact]
         public void SerializeList_NewtonsoftJson()
         {

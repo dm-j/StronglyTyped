@@ -6,6 +6,7 @@
 /// type safety and minimal allocations. It implements the <see cref="global::StrictlyTyped.IStrictBool{T}"/> interface
 /// for strict typing and can be used with the <see cref="global::StrictlyTyped"/> library.
 /// </remarks>
+[global::StrictlyTyped.StrictClassForBaseType<global::System.Boolean>]
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
 #if (USE_SYSTEM_TEXT_JSON)
@@ -219,6 +220,11 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictBool<ZY
         return true;
     }
 
+    public static ZYX Parse(global::System.ReadOnlySpan<global::System.Char> s, global::System.IFormatProvider? _) =>
+        Create(global::System.Boolean.Parse(s));
+
+    public static ZYX Parse(global::System.String s, global::System.IFormatProvider? _) =>
+        Create(global::System.Boolean.Parse(s));
 
     public static global::System.Boolean TryParse(global::System.ReadOnlySpan<global::System.Char> s, [global::System.Diagnostics.CodeAnalysis.MaybeNullWhen(false)] out ZYX result)
     {

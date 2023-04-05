@@ -3,7 +3,7 @@
 /// </summary>
 /// <remarks>
 /// This struct is immutable and can be used for performance-sensitive scenarios that require
-/// type safety and minimal allocations. It implements the <see cref="global::StrictlyTyped.IStrictUString{T}"/> interface
+/// type safety and minimal allocations. It implements the <see cref="global::StrictlyTyped.IStrictString{T}"/> interface
 /// for Strict typing and can be used with the <see cref="global::StrictlyTyped"/> library.
 /// </remarks>
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
@@ -230,7 +230,7 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictString<
 
         if (value is null)
         {
-            validationFailures.Add($"Cannot create {typeof(Test1).FullName} from <null>");
+            validationFailures.Add($"Cannot create {typeof(ZYX).FullName} from <null>");
             failures = validationFailures;
             result = default;
             return false;

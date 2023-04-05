@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrictlyTyped.Common", "Str
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrictlyTyped.Generator", "StrictlyTyped.Generator\StrictlyTyped.Generator.csproj", "{B563F5B7-56A1-42E4-8881-6BD70D6BECC6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example", "Example\Example.csproj", "{89E43678-EDEC-441F-851A-64038A515527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrictlyTyped.Swagger", "StrictlyTyped.Swagger\StrictlyTyped.Swagger.csproj", "{52A0A6A7-933B-4A65-95CB-46D2B041C881}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B563F5B7-56A1-42E4-8881-6BD70D6BECC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B563F5B7-56A1-42E4-8881-6BD70D6BECC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B563F5B7-56A1-42E4-8881-6BD70D6BECC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E43678-EDEC-441F-851A-64038A515527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E43678-EDEC-441F-851A-64038A515527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E43678-EDEC-441F-851A-64038A515527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E43678-EDEC-441F-851A-64038A515527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52A0A6A7-933B-4A65-95CB-46D2B041C881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52A0A6A7-933B-4A65-95CB-46D2B041C881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52A0A6A7-933B-4A65-95CB-46D2B041C881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52A0A6A7-933B-4A65-95CB-46D2B041C881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

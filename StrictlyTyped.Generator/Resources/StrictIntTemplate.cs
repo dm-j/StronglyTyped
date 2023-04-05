@@ -6,6 +6,7 @@
 /// type safety and minimal allocations. It implements the <see cref="global::StrictlyTyped.IStrictInt{T}"/> interface
 /// for strict typing and can be used with the <see cref="global::StrictlyTyped"/> library.
 /// </remarks>
+[global::StrictlyTyped.StrictClassForBaseType<global::System.Int32>]
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
 #if (USE_SYSTEM_TEXT_JSON)

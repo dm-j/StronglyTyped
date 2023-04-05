@@ -11,7 +11,6 @@ namespace StrictlyTyped
         where TSelf : struct, IStrictString<TSelf>
     {
         int Length { get; }
-        TSelf Map(Func<string, string> projection);
 
         /// <summary>
         /// Explicit cast operator that turns a TBase into a TSelf. Does not perform validation or preprocessing
@@ -29,7 +28,5 @@ namespace StrictlyTyped
         static abstract bool operator !=(TSelf left, string right);
         static abstract bool operator ==(string left, TSelf right);
         static abstract bool operator !=(string left, TSelf right);
-
-
     }
 }

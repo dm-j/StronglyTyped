@@ -4,8 +4,7 @@
         IStrictType<TSelf, bool>,
         IComparable,
         IComparable<TSelf>,
-        IEquatable<TSelf>,
-        ISpanParsable<TSelf>
+        IEquatable<TSelf>
         where TSelf : struct, IStrictBool<TSelf>
     {
         bool IsTrue { get; }

@@ -5,6 +5,12 @@ namespace SourceGeneratorTests
 {
     [StrictByte] public partial record struct TestNotWrapped;
 
+    [StrictBool]
+    public partial record struct ABool : global::StrictlyTyped.IStrictBool<ABool>
+    {
+
+    }
+
     public partial class ByteTests
     { 
         [StrictByte] public partial record struct Test1;
