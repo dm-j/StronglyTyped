@@ -12,7 +12,6 @@ namespace SourceGeneratorTests
         public Test1 As()
         {
             var value = 1;
-
             return value.As<Test1>();
         }
 
@@ -21,7 +20,6 @@ namespace SourceGeneratorTests
         {
             var value = 1;
             Test1 test = value.As<Test1>();
-
             Assert.Equal(value, test.Value);
         }
 

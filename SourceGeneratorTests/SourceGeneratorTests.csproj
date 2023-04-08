@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);USE_NEWTONSOFT_JSON;USE_SYSTEM_TEXT_JSON</DefineConstants>
+    <DefineConstants>$(DefineConstants);USE_NEWTONSOFT_JSON</DefineConstants>
     <RootNamespace>SourceGeneratorTests</RootNamespace>
     <IsPublishable>False</IsPublishable>
   </PropertyGroup>

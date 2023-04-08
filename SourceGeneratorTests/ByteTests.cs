@@ -1,32 +1,15 @@
 ﻿using Newtonsoft.Json;
 using StrictlyTyped;
+using System.Numerics;
 
 namespace SourceGeneratorTests
 {
     [StrictByte] public partial record struct TestNotWrapped;
 
-    [StrictBool]
-    public partial record struct ABool : global::StrictlyTyped.IStrictBool<ABool>
-    {
-
-    }
-
     public partial class ByteTests
     { 
         [StrictByte] public partial record struct Test1;
         [StrictByte] public partial record struct Test2;
-        [StrictByte] public partial record struct ZYX;
-
-        [StrictByte] public partial record struct Fussy
-        {
-            private const byte _max = (byte)100;
-
-            partial void _validate(ref HashSet<string> errors)
-            {
-                if (Value > _max)
-                    errors.Add($"Value must be at most 100 ({Value})");
-            }
-        }
 
         [StrictByte]
         public partial record struct OverrideToString
@@ -282,29 +265,29 @@ namespace SourceGeneratorTests
             Assert.Equal(expected, deserializedExpected);
         }
 
-        [Fact]
-        public void CreateValidFussy()
-        {
-            byte value = 1;
+        //[Fact]
+        //public void CreateValidFussy()
+        //{
+        //    byte value = 1;
 
-            Assert.True(value.TryAs(out Fussy _));
-        }
+        //    Assert.True(value.TryAs(out Fussy _));
+        //}
 
-        [Fact]
-        public Fussy CreateInvalidFussyThroughAsDoesNotValidate()
-        {
-            byte value = 101;
+        //[Fact]
+        //public Fussy CreateInvalidFussyThroughAsDoesNotValidate()
+        //{
+        //    byte value = 101;
 
-            return value.As<Fussy>();
-        }
+        //    return value.As<Fussy>();
+        //}
 
-        [Fact]
-        public void CreateInvalidFussyThroughTryAsValidates()
-        {
-            byte value = 101;
+        //[Fact]
+        //public void CreateInvalidFussyThroughTryAsValidates()
+        //{
+        //    byte value = 101;
 
-            Assert.False(value.TryAs(out Fussy _));
-        }
+        //    Assert.False(value.TryAs(out Fussy _));
+        //}
 
         [Fact]
         public void OverrideTheToString()

@@ -3,12 +3,14 @@
 // ReSharper disable once CheckNamespace
 namespace StrictlyTyped
 {
+    public interface IStrictType { }
+
     // ReSharper disable once TypeParameterCanBeVariant
     /// <summary>
     /// Base interface for a strictly-typed value that represents a TBase
     /// </summary>
     /// <typeparam name="TBase">The type wrapped</typeparam>
-    public interface IStrictType<TBase>
+    public interface IStrictType<TBase> : IStrictType
     {
         TBase Value { get; }
     }
@@ -45,6 +47,18 @@ namespace StrictlyTyped
         /// <param name="value">The value to strictly type</param>
         /// <returns>The strictly typed value</returns>
         static abstract TSelf Create(TBase value);
+
+        /// <summary>
+        /// Explicit cast operator that turns a TBase into a TSelf. Does not perform validation or preprocessing
+        /// </summary>
+        /// <param name="value">The TBase to convert</param>
+        static abstract implicit operator TSelf(TBase value);
+
+        /// <summary>
+        /// Explicit cast operator that turns a TSelf back into a TBase
+        /// </summary>
+        /// <param name="value">The TSelf to convert</param>
+        static abstract implicit operator TBase(TSelf value);
 
         TResult Map<TResult>(Func<TBase, TResult> map);
         TStrictResult Map<TResult, TStrictResult>(Func<TBase, TResult> map) where TStrictResult : struct, IStrictType<TStrictResult, TResult>;

@@ -4,7 +4,7 @@ namespace Example
 {
     public static partial class TodoItems
     {
-        [StrictLong]
+        [StrictInt]
         public partial record struct Id;
 
         [StrictString]

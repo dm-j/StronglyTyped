@@ -6,12 +6,9 @@
 /// type safety and minimal allocations. It implements the <see cref="global::StrictlyTyped.IStrictByte{T}"/> interface
 /// for Strict typing and can be used with the <see cref="global::StrictlyTyped"/> library.
 /// </remarks>
-[global::StrictlyTyped.StrictClassForBaseType<global::System.Byte>]
 [global::System.Diagnostics.DebuggerDisplay("{Value}")]
 [global::System.ComponentModel.TypeConverter(typeof(Converter))]
-#if (USE_SYSTEM_TEXT_JSON)
 [global::System.Text.Json.Serialization.JsonConverter(typeof(SystemJsonConverter))]
-#endif
 #if (USE_NEWTONSOFT_JSON)
 [global::Newtonsoft.Json.JsonConverter(typeof(NewtonsoftJsonConverter))]
 #endif
@@ -43,7 +40,7 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictByte<ZY
     /// No validation or preprocessing is performed.
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
-    public static explicit operator global::System.Byte(ZYX value) =>
+    public static implicit operator global::System.Byte(ZYX value) =>
         value.Value;
 
     /// <summary>
@@ -55,7 +52,7 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictByte<ZY
     /// No validation or preprocessing is performed.
     /// </remarks>
     [global::System.Diagnostics.Contracts.Pure]
-    public static explicit operator ZYX(global::System.Byte value) =>
+    public static implicit operator ZYX(global::System.Byte value) =>
         new(value);
 
     [global::System.Diagnostics.Contracts.Pure]
@@ -444,7 +441,6 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictByte<ZY
         }
     }
 
-#if (USE_SYSTEM_TEXT_JSON)
     /// <summary>
     /// A JsonConverter for System.Text.Json which converts ZYX transparently to and from Json representations
     /// </summary>
@@ -460,7 +456,6 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictByte<ZY
             writer.WriteRawValue(global::System.Text.Json.JsonSerializer.Serialize(value.Value));
         }
     }
-#endif
 
 #if (USE_NEWTONSOFT_JSON)
     /// <summary>

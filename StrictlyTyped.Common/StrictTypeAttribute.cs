@@ -44,7 +44,4 @@
 
     [AttributeUsage(AttributeTargets.Struct)]
     public class StrictUShortAttribute : Attribute { }
-
-    [AttributeUsage(AttributeTargets.Struct)]
-    public class BaseClassForStrictType<TBase> : Attribute { } 
 }
