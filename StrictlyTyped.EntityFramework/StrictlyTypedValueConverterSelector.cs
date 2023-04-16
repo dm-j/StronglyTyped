@@ -1,42 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Collections.Concurrent;
+using System.Reflection;
 
 namespace StrictlyTyped.EntityFramework;
 
-public static class DependencyInjectionExtensions
+public static class DbContextConfigurationExtensions
 {
-    public static DbContextOptionsBuilder AddStrictTypeConverters(this DbContextOptionsBuilder builder)
-    {
-        return builder.ReplaceService<IValueConverterSelector, StrictlyTypedValueConverterSelector>();
-    }
+    public static void AddStrictTypeConverters(this DbContextOptionsBuilder options) =>
+        options.ReplaceService<IValueConverterSelector, StronglyTypedIdValueConverterSelector>();
 }
 
-public class StrictlyTypedValueConverterSelector : ValueConverterSelector
+public class StronglyTypedIdValueConverterSelector : ValueConverterSelector
 {
-    private static readonly Type[] _convertedTypes = new[] {
-        typeof(bool),
-        typeof(byte),
-        typeof(decimal),
-        typeof(double),
-        typeof(float),
-        typeof(Guid),
-        typeof(Half),
-        typeof(int),
-        typeof(long),
-        typeof(sbyte),
-        typeof(short),
-        typeof(string),
-        typeof(uint),
-        typeof(ulong),
-        typeof(ushort),
-    }; 
-
     // The dictionary in the base type is private, so we need our own one here.
     private readonly ConcurrentDictionary<(Type ModelClrType, Type ProviderClrType), ValueConverterInfo> _converters
-        = new();
+        = new ConcurrentDictionary<(Type ModelClrType, Type ProviderClrType), ValueConverterInfo>();
 
-    public StrictlyTypedValueConverterSelector(ValueConverterSelectorDependencies dependencies) : base(dependencies)
+    public StronglyTypedIdValueConverterSelector(ValueConverterSelectorDependencies dependencies) : base(dependencies)
     { }
 
     public override IEnumerable<ValueConverterInfo> Select(Type modelClrType, Type? providerClrType = null)
@@ -48,34 +29,38 @@ public class StrictlyTypedValueConverterSelector : ValueConverterSelector
         }
 
         // Extract the "real" type T from Nullable<T> if required
-        var underlyingModelType = _unwrapNullableType(modelClrType);
-        var underlyingProviderType = _unwrapNullableType(providerClrType!);
+        var underlyingModelType = UnwrapNullableType(modelClrType);
+        var underlyingProviderType = UnwrapNullableType(providerClrType!);
 
         // 'null' means 'get any value converters for the modelClrType'
-        if (underlyingProviderType is null || _convertedTypes.Contains(underlyingProviderType))
+        if (underlyingModelType.IsAssignableTo(typeof(IStrictType)))
         {
             // Try and get a nested class with the expected name. 
             var converterType = underlyingModelType.GetNestedType("EFConverter");
 
             if (converterType != null)
             {
+                var baseType = 
+                    underlyingModelType
+                        .GetInterfaces()
+                        .Where(intType => intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IStrictType<>))
+                        .Select(intType => intType.GetGenericArguments()[0])
+                        .Single();
                 yield return _converters.GetOrAdd(
-                    (underlyingModelType, underlyingProviderType!),
+                    (underlyingModelType, baseType),
                     k =>
                     {
-                        // Create an instance of the converter whenever it's requested.
                         Func<ValueConverterInfo, ValueConverter> factory =
                             info => (ValueConverter)Activator.CreateInstance(converterType, info.MappingHints)!;
 
-                        // Build the info for our strongly-typed ID => int converter
-                        return new ValueConverterInfo(modelClrType, typeof(int), factory);
+                        return new ValueConverterInfo(modelClrType, baseType, factory);
                     }
                 );
             }
         }
     }
 
-    private static Type _unwrapNullableType(Type type)
+    private static Type UnwrapNullableType(Type type)
     {
         if (type is null) { return default!; }
 

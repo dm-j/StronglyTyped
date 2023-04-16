@@ -3,16 +3,19 @@ using StrictlyTyped.EntityFramework;
 using System.Reflection;
 using TodoApi.Models;
 using StrictlyTyped.Swagger;
+using Microsoft.Extensions.Options;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<TodoContext>(opt =>
 {
-    opt.UseInMemoryDatabase("TodoList");
-    //opt.AddStrictTypeConverters();
+    //opt.UseInMemoryDatabase("TodoList");
+    opt.AddStrictTypeConverters();
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
