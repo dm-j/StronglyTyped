@@ -11,14 +11,13 @@ public class TodoContext : DbContext
 {
     public TodoContext(DbContextOptions<TodoContext> options)
         : base(options)
-    {
-    }
+    { }
 
-    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        //configurationBuilder
-        //    .DefaultTypeMapping<IStrictType<,>>()
-
+        optionsBuilder.EnableSensitiveDataLogging();
+        optionsBuilder.EnableDetailedErrors();
+        optionsBuilder.LogTo(Console.WriteLine);
     }
 
     public DbSet<TodoItem> TodoItems { get; set; } = null!;

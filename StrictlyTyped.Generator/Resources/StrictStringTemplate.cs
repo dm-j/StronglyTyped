@@ -334,7 +334,16 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictString<
         {
             writer.WriteRawValue(global::System.Text.Json.JsonSerializer.Serialize(value.Value));
         }
-}
+    }
+
+#if (USE_EF_CORE)
+    public class EFConverter : global::Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter<ZYX, global::System.String>
+    {
+        public EFConverter(global::Microsoft.EntityFrameworkCore.Storage.ValueConversion.ConverterMappingHints mappingHints = default!)
+            : base(id => id.Value, value => Create(value), mappingHints)
+        { }
+    }
+#endif
 
 #if (USE_NEWTONSOFT_JSON)
     /// <summary>

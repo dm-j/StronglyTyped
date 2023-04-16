@@ -431,6 +431,15 @@ public readonly partial record struct ZYX : global::StrictlyTyped.IStrictUShort<
         }
     }
 
+#if (USE_EF_CORE)
+    public class EFConverter : global::Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter<ZYX, global::System.UInt16>
+    {
+        public EFConverter(global::Microsoft.EntityFrameworkCore.Storage.ValueConversion.ConverterMappingHints mappingHints = default!)
+            : base(id => id.Value, value => Create(value), mappingHints)
+        { }
+    }
+#endif
+
 #if (USE_NEWTONSOFT_JSON)
     /// <summary>
     /// A JsonConverter for Newtonsoft.Json which converts ZYX transparently to and from Json representations

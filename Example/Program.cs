@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using StrictlyTyped.EntityFramework;
 using System.Reflection;
 using TodoApi.Models;
 using StrictlyTyped.Swagger;
@@ -11,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<TodoContext>(opt =>
 {
     opt.UseInMemoryDatabase("TodoList");
-
+    //opt.AddStrictTypeConverters();
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
